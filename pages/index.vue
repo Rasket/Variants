@@ -157,12 +157,12 @@ const downloadImage = (imageData: string) => {
 <template>
   <div class="min-h-screen bg-slate-50 p-4">
     <div class="container mx-auto max-w-6xl">
-      <h1 class="text-3xl font-bold mb-6">Чеклист с фотографиями</h1>
+      <h1 class="text-3xl font-bold mb-6">Варианты</h1>
       
       <!-- Форма добавления чеклиста -->
       <Card class="mb-8">
         <CardHeader>
-          <CardTitle>Создайте ваш чеклист</CardTitle>
+          <CardTitle>Создайте ваш вариант с чеклистом</CardTitle>
         </CardHeader>
         <CardContent>
           <div class="flex gap-2 mb-4">
