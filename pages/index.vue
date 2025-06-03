@@ -251,7 +251,7 @@ const downloadImage = (imageData: string) => {
           
           <Card>
             <CardHeader>
-                <div class="flex items-center justify-between p-6 pb-2">
+                <div class="flex items-center justify-between pb-2">
                 <CardHeader class="p-0 whitespace-nowrap">
                   <CardTitle>Чеклист и заметки</CardTitle>
                 </CardHeader>
