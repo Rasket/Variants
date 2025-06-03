@@ -5,6 +5,18 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { toast } from 'vue-sonner'
+import { Trash2 } from "lucide-vue-next";
+
+
+
+const handleDelete = (cardId: number) => {
+  // Логика удаления
+  let _toDelte = cards.value?.find(x => x.id === cardId);
+  if (_toDelte) {
+    let deleteIndex = cards.value.indexOf(_toDelte);
+    cards.value?.splice(deleteIndex, 1);
+  }
+};
 
 // Чеклист
 const checklistItems = ref<string[]>([])
@@ -210,7 +222,7 @@ const downloadImage = (imageData: string) => {
             <CardContent>
               <div 
                 @paste="handlePasteImage(card.id, $event)"
-                @click="(e) => e.currentTarget.focus()"
+                @click="(e: MouseEvent) => (e.currentTarget as HTMLElement).focus()"
                 tabindex="0"
                 class="border-2 border-dashed border-slate-200 rounded-lg p-4 min-h-48 flex items-center justify-center cursor-pointer focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-opacity-50 transition-colors"
                 :class="{ 'bg-slate-100': !card.image }"
@@ -239,7 +251,20 @@ const downloadImage = (imageData: string) => {
           
           <Card>
             <CardHeader>
-              <CardTitle>Чеклист и заметки</CardTitle>
+                <div class="flex items-center justify-between p-6 pb-2">
+                <CardHeader class="p-0 whitespace-nowrap">
+                  <CardTitle>Чеклист и заметки</CardTitle>
+                </CardHeader>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  class="text-red-600 hover:text-red-800 hover:bg-red-50 cursor-pointer"
+                  @click="handleDelete(card.id)"
+                >
+                  <span class="mr-2">Удалить</span>
+                  <Trash2 class="h-4 w-4" />
+                </Button>
+              </div>
             </CardHeader>
             <CardContent class="space-y-4">
               <div v-if="card.checklist.length > 0" class="space-y-2">
